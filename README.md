@@ -1,5 +1,6 @@
 # Description 
-The last mile delivery in humanitarian relief supply often happens on a tree or an almost-tree network (which can be approximated to a tree network). I developed a model that takes advantage of the tree structure while making the vehicle routing constraints and built an approximate solution method.
+
+The last mile delivery in humanitarian relief supply chains is an important topic of research and development in humanitarian logistics. Minimising the time of relief delivery and maximally satisfying the needs of people effected are objectives of mathematcially modeling these supply chains. I found that the last mile delivery network in humatirian supply chains is often a almost-tree graph (a graph with very small number of cycles). In this research, I explored the idea of exploting the approximate tree structure of these graphs to improve the compuational efficiency of solution methods for the last mile delivery problem.
 
 # model1_cplex.py 
 First, I built a multi-period multi-modal relief delivery model incorporating a tree network for last mile delivery. We developed a mixed integer programming (MIP) formulation with the goal of minimizing the unsatisfied demand of the population and used to solve the relief routing problem of Nepal 2015 earthquake. Details of the model will uploaded with research paper.
