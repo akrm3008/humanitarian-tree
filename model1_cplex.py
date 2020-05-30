@@ -1,5 +1,4 @@
-# In this script we build the first model in Cplex and solve the case using it.
-
+# In this script we build the first model and solve it using CPLEX. The data and input parameters are from Nepal Earthquake relief networks
 
 # impoting the required modules
 import cplex
@@ -22,7 +21,8 @@ Ditc= []
 Sitc=[]
 rikt=[]
 
-# Parameters 
+# Initilising Parameters 
+# Here we input parametres from Sindhupalchow relif network from Nepal Erthquake 2015 
 
 N=117
 P=6
