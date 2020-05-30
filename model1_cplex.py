@@ -22,13 +22,7 @@ Ditc= []
 Sitc=[]
 rikt=[]
 
-
-
-
-
-
 # Parameters 
-
 
 N=117
 P=6
@@ -48,10 +42,9 @@ A=[1,15,22,44,50,78,99]
 Com=[0,1]
 B= [x for x in range(117) if x!=0]
 
-
 ## Getitng Cost Matrix for primary network
 
-df = pd.read_excel("C:/Users/S K Khare/Desktop/important stuff to save/rescue/Nepal/Remote Acess Operations/models being used now/case_study.xlsx",sheetname="distance_matrix_HLZ",na_values=None)
+df = pd.read_excel(PATH,sheetname="distance_matrix_HLZ",na_values=None)
 np_array1 = df.as_matrix()
 distance_matrix_HLZ=np_array1.tolist()
 for i in range(len(distance_matrix_HLZ)):
@@ -64,14 +57,10 @@ for i in range(len(distance_matrix_HLZ )):
         if i>j:
             distance_matrix_HLZ[i][j]=distance_matrix_HLZ[j][i]
             
-            
-
-
-
 
 ## Getting Cost Matrix for secondary network 
             
-df = pd.read_excel("C:/Users/S K Khare/Desktop/important stuff to save/rescue/Nepal/Remote Acess Operations/models being used now/case_study.xlsx",sheetname="distance_matrix_tree",na_values=None)
+df = pd.read_excel("Path",sheetname="distance_matrix_tree",na_values=None)
 np_array2 = df.as_matrix()
 distance_matrix_tree = np_array2.tolist()
 
@@ -85,11 +74,6 @@ for i in range(len(distance_matrix_tree )):
         if i>j:
             distance_matrix_tree[i][j]=distance_matrix_tree[j][i]
             
-
-        
-
-
-
 # Getting final distance/cost matrices 
         
 a= distance_matrix_tree
@@ -127,8 +111,7 @@ f=[]
 for i in V:
     f.append(4) 
  
-    
-
+   
 Btc=[]
 for t in range(P):
     Btc.append([])
