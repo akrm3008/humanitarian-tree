@@ -1,14 +1,18 @@
 # Description 
 
-The last mile delivery in humanitarian relief supply chains is an important topic of research and development in humanitarian logistics. Minimising the time of relief delivery and maximally satisfying the needs of people effected are objectives of mathematcially modeling these supply chains. I found that the last mile delivery network in humatirian supply chains is often a almost-tree graph (a graph with very small number of cycles). In this research, I explored the idea of exploting the approximate tree structure of these graphs to improve the compuational efficiency of solution methods for the last mile delivery problem. 
+The last mile delivery in humanitarian relief supply chains is an important topic of research in humanitarian logistics. In the literature of Operations Research, there are multiple mathematical optimizations models which optimize supply chain decisions to minimize the delivery times, costs and unsatified demand of the people in need. We found that the last mile delivery network in humanitirian supply chains is often a almost-tree graph (a graph with very small number of cycles) due to damages caused to infrastructure because of the disaster. In this research, we explored the idea of exploting the approximate tree structure of these graphs to improve the compuational efficiency of solution methods for the last mile delivery problems. The details of this research and results have been published and are available in the file publication.pdf or at https://www.tandfonline.com/doi/abs/10.1080/01605682.2019.1708824
 
-# model1_cplex.py 
+The problem was modeled using two mixed integer programming (MIP) formulation: (a) Model 1 is a general MIP formulation of the problem (b) Model 2 or the Model with tree route formulation is a MIP which utilises the structure of tree graphs to formulate contraints for vehicle routing which reduces the computational complexity of the model. We solved the two models using CPLEX and found CPLEX solved the Model 2 faster as expected. We also proved some mathematical properties of vehicle routing on trees with split deliveries and used them  a decomposotion of the model and herestics to solve the decomposed model. The heurestic reduces comptational times manifolds and and also closely approximates the optimal solution. We tested the models and solution methods using Nepal Earthquake (2015) data. For details check the file publication.pdf or at https://www.tandfonline.com/doi/abs/10.1080/01605682.2019.1708824
 
-First, I built a multi-period multi-modal relief delivery model incorporating a tree network for last mile delivery. We developed a mixed integer programming (MIP) formulation with the goal of minimizing the unsatisfied demand of the population and used to solve the relief routing problem of Nepal 2015 earthquake. Details of the model will uploaded with research paper.
+# Files 
 
-# model2_cplex.py 
+1. Parameters.py contains class param to initialise parameters or import data and process it to obtain parameters for both the models.
+2. BuildModel.py contains the function model_CPLEX() to build a MIP for model 1 and solve it using CPLEX.
+3. BuildModelTree.py contains the function model_CPLEX_tree() to build a MIP for model 2 and solve it using CPLEX.
+4. Heurestic.py contains function to run the heurestic we created to solve the decomposition of the model.
+5. GetSolution.py contains functions to print solution
+6. main.py is the script for performing experiments.
 
-In the second model, I take the advantage of the fact that the secondary model is almost tree and can be approximated a tree. Hence, iI first coverted the secondary network to a minimum spanning tree.  Next, I built a reformulation of the original model in which the routing constraints have been changed and reduced as they take advantage  of the tree structure of the secondary network. Details of these changes The model is coded in Cplex and used to solve the case study. Reduction in computational time was expected. We found that this gave an order of magnitude reduction in computational time. Details will be uploaded with the research paper.
 
-# Approximate_method.py
-To further improve computational efficiency, I developed a heuristic solution method based on a decomposition scheme applied to the tree network formulation. This led to the Capacitated Vehicle Routing Problem on trees with split deliveries (TCVRP-SD), for which I derived a closed-form solution. This decomposition scheme resulted in a further order of magnitude reduction in computation time. (Details will be shared in the research paper) 
+
+
