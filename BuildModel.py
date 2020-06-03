@@ -1,5 +1,4 @@
-# In this script we build the first model in Cplex and solve the case using it.
-# impoting the required modules
+# This script contains the funcion model_cplex() to build model 1 using cplex and solving it.
 
 import cplex
 from cplex.exceptions import CplexSolverError
