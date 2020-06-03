@@ -1,12 +1,17 @@
+# In this script I define the class Param which can be used to initialise and save parameters or import and save them. 
+
+
 import pandas as pd
 from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import minimum_spanning_tree
 
 
-# Parameters 
+# Defining the class Param
 
 
 class Param:
+    
+# The __init__ function which is used to initalise an object of class Param
 
     def __init__(self, N = None,P = None ,L = None ,K = None, H = None ,ql = None, qk = None ,
                  rk = None , sk = None, rh = None ,sh = None , V = [], S = [], W= [], A = [],
@@ -14,36 +19,38 @@ class Param:
                  m = [], g = [], f = [], Btc =[], Ch=[], Pa =[], subtrees =[], uprime = None, 
                  lprime = None):
         
-        self.N = N
-        self.P = P 
-        self.L = L
-        self.K = K
-        self.H = H
-        self.ql = ql
-        self.qk = qk
-        self.rk = rk
-        self.sk = sk
-        self.rh = rh
-        self.sh = sh
-        self.V = V
-        self.S = S
-        self.W = W
+        self.N = N     # Total number of vertices in the networks
+        self.P = P     # Number of time periods 
+        self.L = L     # Number of vehicles serving the primary network
+        self.K = K     # Number of vehicles serving one tree in the secondary network
+        self.H = H     # Numeber of trees in the secondary network     
+        self.ql = ql   # Capacity of primary network vehicles
+        self.qk = qk   # Capacity of secondary network vehciles
+        self.rk = rk   # Maximum route time allowed for vehicle on secondary network
+        self.sk = sk   # Average speed of a vehicle on secondary network
+        self.rh = rh   # Maximum route time allowed for vehilcle on a prmary network
+        self.sh = sh   # Average speed of a vehicle on primary network
+        self.V = V     # Set of all vertices 
+        self.S = S     # Set of vertices on a secondary network
+        self.W = W     # Set of vertices in primary network
         self.A = A
-        self.Com = Com
+        self.Com = Com  # Set of commodities part of relief supply
         self.B = B
-        self.distance_matrix_PN = distance_matrix_PN
-        self.distance_matrix_SN = distance_matrix_SN 
-        self.demand = demand
-        self.m = m
-        self.g = g
-        self.f = f
-        self.Btc = Btc
+        self.distance_matrix_PN = distance_matrix_PN  # Cost matrix of primary network
+        self.distance_matrix_SN = distance_matrix_SN  # Cost matrix of secondary network
+        self.demand = demand   # list containing demand of commodities at different vertices
+        self.m = m   # list containing demand at different vertices for different commodities
+        self.g = g   # service time for primary vehicles 
+        self.f = f   # service time for secondary vehicles
+        self.Btc = Btc  # list of availablity of commoditites in different time periods
         self.uprime = uprime
         self.lprime = lprime
-        self.Ch = Ch
-        self.Pa= Pa
-        self.subrees = subtrees
+        self.Ch = Ch  # List of list of childrens for each vertices
+        self.Pa= Pa   # List of parents for each children 
+        self.subrees = subtrees  # List of list of subtrees at each vertex
         
+  # The method getParamModel1 is used to import data and process it to get the parameters for model 1
+
     def getParamModel1(self, PATH, sheetname1, sheetname2, sheetname3, sheetname4, sheetname5,sheetname6):
         
         df1 = pd.read_excel(PATH,sheetname= sheetname1,na_values=None)
@@ -113,7 +120,8 @@ class Param:
                     
         return self 
 
-        
+  # The method getParamModelTree is used to import data and process it to get the parameters for model 2 or the tree model  
+
         def getParamModelTree(self, PATH, sheetname1, sheetname2, sheetname3, sheetname4, sheetname5,sheetname6):
         
             df1 = pd.read_excel(PATH,sheetname= sheetname1,na_values=None)
@@ -157,6 +165,7 @@ class Param:
                         self.distance_matrix_PN[i][j] = self.distance_matrix_PN[j][i]
              
         # Getting the Minimum Spanning Tree of the secondary network using Krushkal's MST algorihm.
+        
             self.distance_matrix_SN = df5.as_matrix()
             Tcsr = minimum_spanning_tree(self.distance_matrix_SN)
             self.distance_matrix_SN= Tcsr.toarray().astype(int)
