@@ -1,4 +1,6 @@
 # In this script I define the class Param which can be used to initialise and save parameters or import and save them. 
+# For the second model we covert the secondary network to a minimum spanning tree by using Kruskhal's algorithm on distance_matrix_SN.
+
 
 
 import pandas as pd
