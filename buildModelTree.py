@@ -1,10 +1,6 @@
+# In this script, we have function cplex_model_tree() to build model 2 using cplex and solve it.
 # In the second model we take the advantage of the fact that the secondary model is almost tree and can be approximated
-# a tree. Hence, in this code we  first covert the secondary network to a minimum spanning tree
-# Next, we build the second model in which the routing constraints have been chnaged and reduced as they take advantage 
-# of the tree structure of the secondary network 
-# The model is coded in Cplex and used to solve the case study 
-# Reduction in computational time is expected
-
+# a tree. 
 
 # Importing the modules 
 import cplex
