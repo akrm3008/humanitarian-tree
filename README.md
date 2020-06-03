@@ -7,10 +7,10 @@ The problem was modeled using two mixed integer programming (MIP) formulation: (
 # Files 
 
 1. Parameters.py contains class param to initialise parameters or import data and process it to obtain parameters for both the models.
-2. BuildModel.py contains the function model_CPLEX() to build a MIP for model 1 and solve it using CPLEX.
-3. BuildModelTree.py contains the function model_CPLEX_tree() to build a MIP for model 2 and solve it using CPLEX.
+2. BuildModel.py contains the functions to build a MIP for model 1 and solve it using CPLEX.
+3. BuildModelTree.py contains the functions to build a MIP for model 2 and solve it using CPLEX.
 4. Heurestic.py contains function to run the heurestic we created to solve the decomposition of the model.
-5. GetSolution.py contains functions to print solution
+5. GetSolution.py contains functions to print solution.
 6. main.py is the script for performing experiments.
 
 
